@@ -1,16 +1,20 @@
 package ua.boden.tester.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Category {
 
 	private int id;
-	
+
 	private String name;
 
 	private Category supperCategory;
-	
-//	private List<Category>
+
+	private int supperCategoryId;
+
+	private List<Category> subCategories = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -34,6 +38,22 @@ public class Category {
 
 	public void setSupperCategory(Category supperCategory) {
 		this.supperCategory = supperCategory;
+	}
+
+	public int getSupperCategoryId() {
+		return supperCategoryId;
+	}
+
+	public void setSupperCategoryId(int supperCategoryId) {
+		this.supperCategoryId = supperCategoryId;
+	}
+
+	public List<Category> getSubCategories() {
+		return subCategories;
+	}
+
+	public void setSubCategories(List<Category> subCategories) {
+		this.subCategories = subCategories;
 	}
 
 	@Override
