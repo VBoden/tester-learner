@@ -4,12 +4,12 @@ public class WritingWordsStrategy extends AbstractStrategy {
 
 	@Override
 	public Stage getPreviousStage() {
-		return Stage.FOREIGN_TO_NATIVE;
+		return Stage.SELECTING_ANSWER;
 	}
 
 	@Override
 	public Stage getNextStage() {
-		return Stage.FOREIGN_TO_NATIVE;
+		return Stage.SELECTING_ANSWER;
 	}
 
 }

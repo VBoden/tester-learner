@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Stage {
-	FOREIGN_TO_NATIVE(0), WRITING_WORDS(1);
+	SELECTING_ANSWER(0), WRITING_ANSWER(1);
 
 	private int index;
 	private static final Map<Integer, Stage> map;

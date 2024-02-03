@@ -12,19 +12,19 @@ import ua.boden.tester.services.UiUpdator;
 
 import static ua.boden.tester.services.ContextHolder.getLearningManager;
 
-public class WritingWordsUiUpdator implements UiUpdator {
+public class WritingAnswersUiUpdator implements UiUpdator {
 
 	private TextView questionText;
 	private EditText questionAnswerField;
 	private MainActivity mainActivity;
 
-	public WritingWordsUiUpdator(MainActivity mainActivity) {
+	public WritingAnswersUiUpdator(MainActivity mainActivity) {
 		this.mainActivity = mainActivity;
 	}
 
 	@Override
 	public void updateWord() {
-		questionText.setText(getLearningManager().getWordToDisplay());
+		questionText.setText(getLearningManager().getQuestionToDisplay());
 		questionAnswerField.setText("");
 	}
 
@@ -32,12 +32,12 @@ public class WritingWordsUiUpdator implements UiUpdator {
 	public void updateUiOnNewPortionStarted() {
 		int startFromNumber = ContextHolder.getSettingsHolder().getStartFromNumber();
 		Context context = mainActivity.getApplicationContext();
-		Toast toast = Toast.makeText(context,
-				mainActivity.getResources().getString(R.string.words) /*+ getLearningManager().getWordCard(startFromNumber).getWord()
-						+ "-" + getLearningManager().getWordCard(startFromNumber + 9).getWord() + " ("*/
-						+ (startFromNumber + 1) + "-" + (startFromNumber + 10) /*+ ")"*/,
-				Toast.LENGTH_SHORT);
-		toast.show();
+//		Toast toast = Toast.makeText(context,
+//				mainActivity.getResources().getString(R.string.words) /*+ getLearningManager().getWordCard(startFromNumber).getWord()
+//						+ "-" + getLearningManager().getWordCard(startFromNumber + 9).getWord() + " ("*/
+//						+ (startFromNumber + 1) + "-" + (startFromNumber + 10) /*+ ")"*/,
+//				Toast.LENGTH_SHORT);
+//		toast.show();
 	}
 
 	@Override
@@ -48,6 +48,7 @@ public class WritingWordsUiUpdator implements UiUpdator {
 	@Override
 	public void createNewActivity() {
 		mainActivity.setContentView(R.layout.form3);
+		mainActivity.setTitle(R.string.app_name3);
 
 		questionText = (TextView) mainActivity.findViewById(R.id.word3);
 		questionAnswerField = (EditText) mainActivity.findViewById(R.id.word2);
@@ -67,9 +68,9 @@ public class WritingWordsUiUpdator implements UiUpdator {
 	}
 
 	@Override
-	public void showHint(String word, String answer) {
+	public void showHint(String question, String answer) {
 		Context context = mainActivity.getApplicationContext();
-		Toast toast = Toast.makeText(context, word + " - " + answer, Toast.LENGTH_SHORT);
+		Toast toast = Toast.makeText(context, "Правильна відповідь: " + answer, Toast.LENGTH_SHORT);
 		toast.show();
 	}
 }

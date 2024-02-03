@@ -30,13 +30,13 @@ public class LearningManager {
 		this.allQuestions = allQuestions;
 		questionsCount = allQuestions.size();
 		createStagesMap();
-		currentStage = Stage.FOREIGN_TO_NATIVE;
+		currentStage = Stage.SELECTING_ANSWER;
 	}
 
 	private void createStagesMap() {
 		stagesStrategies = new HashMap<>();
-		stagesStrategies.put(Stage.FOREIGN_TO_NATIVE, new ForeignToNativeStrategy());
-		stagesStrategies.put(Stage.WRITING_WORDS, new WritingWordsStrategy());
+		stagesStrategies.put(Stage.SELECTING_ANSWER, new ForeignToNativeStrategy());
+		stagesStrategies.put(Stage.WRITING_ANSWER, new WritingWordsStrategy());
 	}
 
 	public AbstractStrategy getCurrentStrategy() {
@@ -130,7 +130,7 @@ public class LearningManager {
 		} else {
 			k_zal_sliv++;
 			kilk[currentCartdNum - startFrom]--;
-			ContextHolder.getUiUpdator(currentStage).showHint(getWordToDisplay(), getWordAnswer());
+			ContextHolder.getUiUpdator(currentStage).showHint(getQuestionToDisplay(), getWordAnswer());
 		}
 	}
 
@@ -160,7 +160,7 @@ public class LearningManager {
 		}
 	}
 
-	public String getWordToDisplay() {
+	public String getQuestionToDisplay() {
 		return getCurrentStrategy().getWordToDisplay(getCurrentCard());
 	}
 

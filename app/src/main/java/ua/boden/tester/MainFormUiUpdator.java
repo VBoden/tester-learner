@@ -19,9 +19,8 @@ import static ua.boden.tester.services.ContextHolder.getLearningManager;
 
 @TargetApi(30)
 public class MainFormUiUpdator implements UiUpdator {
-	private TextView Vtransc;
-	private TextView Vword;
-	private ListView listView;
+	private TextView questionText;
+	private ListView answersListView;
 	private MainActivity mainActivity;
 	private ArrayAdapter<String> adapt;
 
@@ -34,7 +33,7 @@ public class MainFormUiUpdator implements UiUpdator {
 	}
 
 	public void chooseAndFillNativeWord() {
-		Vword.setText(getLearningManager().getWordToDisplay());
+		questionText.setText(getLearningManager().getQuestionToDisplay());
 	}
 
 	public void listSetAdapter() {
@@ -67,7 +66,7 @@ public class MainFormUiUpdator implements UiUpdator {
 				return row;
 			}
 		};
-		listView.setAdapter(adapt);
+		answersListView.setAdapter(adapt);
 	}
 
 	public void updateList() {
@@ -88,13 +87,13 @@ public class MainFormUiUpdator implements UiUpdator {
 
 	@Override
 	public void updateWord() {
-		Vword.setText(getLearningManager().getWordToDisplay());
+		questionText.setText(getLearningManager().getQuestionToDisplay());
 		listSetAdapter();
 	}
 
 	@Override
 	public void updateOnStageStart() {
-		Vword.setText(getLearningManager().getWordToDisplay());
+		questionText.setText(getLearningManager().getQuestionToDisplay());
 		listSetAdapter();
 //		mainActivity.getMenu().getItem(0).setEnabled(getLearningManager().hasPreviousStep());
 	}
@@ -104,12 +103,11 @@ public class MainFormUiUpdator implements UiUpdator {
 		mainActivity.setContentView(R.layout.main_window);
 		mainActivity.setTitle(R.string.app_name2);
 
-		Vword = (TextView) mainActivity.findViewById(R.id.word);
-		Vword.setText(R.string.selectdict);
-		Vtransc = (TextView) mainActivity.findViewById(R.id.transcription);
-		listView = (ListView) mainActivity.findViewById(R.id.list);
-		mainActivity.registerForContextMenu(listView);
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		questionText = (TextView) mainActivity.findViewById(R.id.word);
+		questionText.setText(R.string.selectdict);
+		answersListView = (ListView) mainActivity.findViewById(R.id.list);
+		mainActivity.registerForContextMenu(answersListView);
+		answersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View itemClicked, int position, long id) {
 				getLearningManager().checkAnswer(getLearningManager().getWordChoices()[position]);
@@ -125,7 +123,7 @@ public class MainFormUiUpdator implements UiUpdator {
 	@Override
 	public void showHint(String word, String answer) {
 		Context context = mainActivity.getApplicationContext();
-		Toast toast = Toast.makeText(context, word + " - " + answer, Toast.LENGTH_SHORT);
+		Toast toast = Toast.makeText(context, "Правильна відповідь: " + answer, Toast.LENGTH_SHORT);
 		toast.show();
 	}
 }
