@@ -1,5 +1,6 @@
 package ua.boden.tester.services;
 
+import ua.boden.tester.pojo.Category;
 import ua.boden.tester.pojo.Question;
 
 import java.util.ArrayList;
@@ -17,9 +18,10 @@ public class ContextHolder {
 	private static final Map<Stage, UiUpdator> STAGES_UI_UPDATORS = new HashMap<>();
 	private LearningManager learningManager;
 	private SettingsHolder settingsHolder;
-	private String[] categories;
+	private String[] categoriesList;
 //	private String[] dictionaries;
 //	private List<List<Question>> loadedWordCards = new ArrayList<>();
+	private Map<Integer, Category> idToCategory;
 
 	public static ContextHolder getInstance() {
 		if (Objects.isNull(instance)) {
@@ -59,11 +61,19 @@ public class ContextHolder {
 	}
 
 	public String[] getCategories() {
-		return categories;
+		return categoriesList;
 	}
 
-	public void setCategories(String[] categories) {
-		this.categories = categories;
+	public void setCategoriesList(String[] categories) {
+		this.categoriesList = categories;
+	}
+
+	public Map<Integer, Category> getIdToCategory() {
+		return idToCategory;
+	}
+
+	public void setIdToCategory(Map<Integer, Category> idToCategory) {
+		this.idToCategory = idToCategory;
 	}
 
 //	public String[] getDictionaries() {

@@ -40,7 +40,7 @@ public class SelectCategoryActivity extends Activity {
 		dbManager.open();
 		Cursor cursor = dbManager.fetchCategories();
 		String[] categories = fetchList("defaultTitle", cursor);
-		ContextHolder.getInstance().setCategories(categories);
+		ContextHolder.getInstance().setCategoriesList(categories);
 		listView.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item_left,
 				removeIds(ContextHolder.getInstance().getCategories())));
 
@@ -169,6 +169,7 @@ public class SelectCategoryActivity extends Activity {
 				// cursor.getInt(0));
 				// i++;
 			}
+			ContextHolder.getInstance().setIdToCategory(idToCat);
 			for (Category category : categories) {
 				int supperCategoryId = category.getSupperCategoryId();
 				if (idToCat.containsKey(supperCategoryId)) {

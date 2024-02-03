@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import ua.boden.tester.pojo.Category;
+import ua.boden.tester.services.ContextHolder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 import static ua.boden.tester.services.ContextHolder.getSettingsHolder;
 
@@ -56,17 +60,26 @@ public class DBManager {
 	}
 
 	public Cursor fetchEntitiesByCategory(String categoryId) {
+		Category category = ContextHolder.getInstance().getIdToCategory().get(Integer.parseInt(categoryId));
+		Set<String> ids = new HashSet<>();
+		addIds(ids, category);
 		String query = "SELECT id, text, type_id"
 				+ " FROM question as q JOIN question_categories as qc on q.id=qc.question_id" + WHERE_AND
-				+ "qc.category_id=?;";
-		Cursor cursor = database.rawQuery(query, new String[] { categoryId });
+				+ "qc.category_id in (" + String.join(",", ids) + ");";
+		Cursor cursor = database.rawQuery(query, null);
 		return cursor;
+	}
+
+	private void addIds(Set<String> ids, Category category) {
+		ids.add(String.valueOf(category.getId()));
+		for (Category subCat : category.getSubCategories()) {
+			addIds(ids, subCat);
+		}
 	}
 
 	public Cursor fetchAnswersByQuestion(String questionId) {
 		String query = "SELECT a.value, a.is_correct"
-				+ " FROM question_answers as qa JOIN answer as a ON qa.answers_id=a.id" + WHERE_AND
-				+ "question_id=?;";
+				+ " FROM question_answers as qa JOIN answer as a ON qa.answers_id=a.id" + WHERE_AND + "question_id=?;";
 		Cursor cursor = database.rawQuery(query, new String[] { questionId });
 		return cursor;
 	}
