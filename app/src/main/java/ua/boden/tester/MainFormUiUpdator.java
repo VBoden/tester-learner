@@ -78,12 +78,12 @@ public class MainFormUiUpdator implements UiUpdator {
 	public void updateUiOnNewPortionStarted() {
 		int startFromNumber = getStartFromNumber();
 		Context context = mainActivity.getApplicationContext();
-		Toast toast = Toast.makeText(context,
-				mainActivity.getResources().getString(R.string.words) + /*ContextHolder.getAllWordCards().get(startFromNumber).getWord() + "-"
-						+ ContextHolder.getAllWordCards().get(startFromNumber + 9).getWord() + " ("*/ + (startFromNumber + 1) + "-"
-						+ (startFromNumber + 10) /*+ ")"*/,
-				Toast.LENGTH_SHORT);
-		toast.show();
+//		Toast toast = Toast.makeText(context,
+//				mainActivity.getResources().getString(R.string.words) + /*ContextHolder.getAllWordCards().get(startFromNumber).getWord() + "-"
+//						+ ContextHolder.getAllWordCards().get(startFromNumber + 9).getWord() + " ("*/ + (startFromNumber + 1) + "-"
+//						+ (startFromNumber + 10) /*+ ")"*/,
+//				Toast.LENGTH_SHORT);
+//		toast.show();
 	}
 
 	@Override
@@ -96,7 +96,7 @@ public class MainFormUiUpdator implements UiUpdator {
 	public void updateOnStageStart() {
 		Vword.setText(getLearningManager().getWordToDisplay());
 		listSetAdapter();
-		mainActivity.getMenu().getItem(0).setEnabled(getLearningManager().hasPreviousStep());
+//		mainActivity.getMenu().getItem(0).setEnabled(getLearningManager().hasPreviousStep());
 	}
 
 	@Override

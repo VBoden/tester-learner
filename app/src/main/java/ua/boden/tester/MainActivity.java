@@ -37,6 +37,8 @@ import android.widget.Toast;
 
 import ua.boden.tester.services.ContextHolder;
 import ua.boden.tester.services.Stage;
+import ua.boden.tester.sqlite.DBManager;
+import ua.boden.tester.sqlite.DatabaseHelper;
 
 import static ua.boden.tester.services.ContextHolder.getLearningManager;
 
@@ -62,34 +64,31 @@ public class MainActivity extends Activity {
         setTitle(R.string.app_name2);
         mainFormUiUpdator = new MainFormUiUpdator(this);
         ContextHolder.registerUiUpdator(Stage.FOREIGN_TO_NATIVE, mainFormUiUpdator);
-//        ContextHolder.registerUiUpdator(Stage.NATIVE_TO_FOREIGN, mainFormUiUpdator);
         ContextHolder.registerUiUpdator(Stage.WRITING_WORDS, new WritingWordsUiUpdator(this));
-//
+
         ContextHolder.getUiUpdator(Stage.FOREIGN_TO_NATIVE).createNewActivity();
         ContextHolder.getInstance()
                 .createSettingsHolder(new UserPreferencesAdapter(getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE)));
 
-//        copyDefaultDbIfNotPresent();
-//        selectDictionaryFromDB();
+        copyDefaultDbIfNotPresent();
         selectCategoryFromDB();
     }
 
-//    private void copyDefaultDbIfNotPresent() {
-//        DBManager dbManager = new DBManager(this);
-//        try {
-//            dbManager.open();
-//            dbManager.fetchLanguages();
-//        } catch (android.database.sqlite.SQLiteException sqe) {
-//            dbManager.close();
-//            InputStream myInput;
-//            try {
-//                myInput = getAssets().open(DatabaseHelper.DB_NAME);
-//                dbManager.copyDBfile(myInput);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    private void copyDefaultDbIfNotPresent() {
+        DBManager dbManager = new DBManager(this);
+        try {
+            dbManager.open();
+        } catch (android.database.sqlite.SQLiteException sqe) {
+            dbManager.close();
+            InputStream myInput;
+            try {
+                myInput = getAssets().open(DatabaseHelper.DB_NAME);
+                dbManager.copyDBfile(myInput);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public Menu getMenu() {
         return menu;
@@ -314,40 +313,40 @@ public class MainActivity extends Activity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-//        menu.setHeaderTitle(R.string.parameters);
-//        menu.add(R.string.smaller_size).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                ContextHolder.getSettingsHolder().decreaseTextSize();
-//                mainFormUiUpdator.updateList();
-//                return true;
-//            }
-//        });
-//        menu.add(R.string.bigger_size).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                ContextHolder.getSettingsHolder().increaseTextSize();
-//                mainFormUiUpdator.updateList();
-//                return true;
-//            }
-//        });
-//        menu.add(R.string.smaller_distance).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                ContextHolder.getSettingsHolder().decreaseTextPadding();
-//                mainFormUiUpdator.updateList();
-//                return true;
-//            }
-//        });
-//        menu.add(R.string.bigger_distance).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                ContextHolder.getSettingsHolder().increaseTextPadding();
-//                mainFormUiUpdator.updateList();
-//                return true;
-//            }
-//        });
-//
+        menu.setHeaderTitle(R.string.parameters);
+        menu.add(R.string.smaller_size).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                ContextHolder.getSettingsHolder().decreaseTextSize();
+                mainFormUiUpdator.updateList();
+                return true;
+            }
+        });
+        menu.add(R.string.bigger_size).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                ContextHolder.getSettingsHolder().increaseTextSize();
+                mainFormUiUpdator.updateList();
+                return true;
+            }
+        });
+        menu.add(R.string.smaller_distance).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                ContextHolder.getSettingsHolder().decreaseTextPadding();
+                mainFormUiUpdator.updateList();
+                return true;
+            }
+        });
+        menu.add(R.string.bigger_distance).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                ContextHolder.getSettingsHolder().increaseTextPadding();
+                mainFormUiUpdator.updateList();
+                return true;
+            }
+        });
+
 //        menu.add(R.string.start_from).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 //            @Override
 //            public boolean onMenuItemClick(MenuItem item) {

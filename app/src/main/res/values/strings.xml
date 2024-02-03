@@ -14,11 +14,11 @@
 
 
     <string name="app_name">Зубрилка</string>
-    <string name="app_name2">Лінгво-зубрилка: переклад слів</string>
-    <string name="app_name3">Лінгво-зубрилка: написання слів</string>
-    <string name="selectdict">Не вибрано слів для вивчення</string>
-    <string name="words">"слова "</string>
-    <string name="end_of_dict">"Досягнуто кінця словника. Вивчення буде розпочато з початку"</string>
+    <string name="app_name2">Зубрилка: вибір відповіді</string>
+    <string name="app_name3">Зубрилка: написання відповіді</string>
+    <string name="selectdict">Не вибрано запитань для вивчення</string>
+    <string name="words">"запитання "</string>
+    <string name="end_of_dict">"Пройдено усі запитання. Вивчення буде розпочато з початку"</string>
     <string name="prev_step">"Попередній етап"</string>
     <string name="next_step">"Наступний етап"</string>
     <string name="last_opend">"Недавно відкриті"</string>
@@ -45,45 +45,27 @@
     <string name="set_new_name">"Введіть нову назву словника"</string>
     <string name="change">"Змінити"</string>
     <string name="deleting_dict">"Видалення словника"</string>
-    <string name="do_you_wish_delete">"Ви дійсно бажаєте  видалити словник?"</string>
+    <string name="do_you_wish_delete">"Ви дійсно бажаєте видалити словник?"</string>
     <string name="delete">"Видалити"</string>
     <string name="select">"Вибрати"</string>
 
 
-    <string name="open_db">Вибрати набір слів із БД</string>
+    <string name="open_db">Вибрати тему</string>
     <string name="open">Вибрати файл словника</string>
-    <string name="option_kilk">Повторювати слова (кількість раз):</string>
-    <string name="option_use_TTS">Промовляти слова, використовуючи TTS</string>
-    <string name="option_use_GoogleTTS">Google TTS</string>
-    <string name="option_use_FliteTTS">Flite TTS</string>
-    <string name="option_use_sound_files">Використовувати звукові файли при наявності</string>
-    <string name="option_language_label">Будь ласка, виберіть мову промовляння</string>
-    <string name="languageFrom">Мова слова:</string>
-    <string name="languageTo">Мова перекладу:</string>
-    <string name="loadOrUpdateDBfromFile">Оновити базу слів із файлу</string>
-    <string name="option_sound_files_path">Шлях до папки звукових файлів:</string>
+    <string name="option_kilk">Повторювати запитання (кількість раз):</string>
+    <string name="loadOrUpdateDBfromFile">Оновити базу питань із файлу</string>
     <string name="title_activity_select_dict">Вибрати словник</string>
-    <string name="openPlayer">Відкрити програвач</string>
     <string name="menu_settings">Налаштування</string>
     <string name="settings_shortcut">s</string>
     <string name="menu_dicstmanager">Управління словниками</string>
     <string name="dicstmanager_shortcut">d</string>
     <string name="title_activity_last_opend">Недавно відкриті словники</string>
-    <string name="title_activity_select_dir">Тека із звуковими файлами</string>
     <string name="title_activity_select_new_path">Нове розміщення словника</string>
     <string name="title_activity_load_from_db">Завантажити з бази</string>
-    <string name="title_activity_player">Програвач</string>
     <string name="coud_not_open_help">"Не вдалось відкрити довідку"</string>
 
     <string name="category">Категорія</string>
     <string name="dictionary">Словник</string>
     <string name="randomize">Перемішати слова</string>
-    <string name="noWordsFound">Не достатньо слів! Зробіть інший вибір.</string>
-    <string name="translationsFirst">Спочатку переклад</string>
-
-    <string name="context_playlist_title">"Змінити список"</string>
-    <string name="context_moveUp">"Перемістити вище"</string>
-    <string name="context_moveDown">"Перемістити нижче"</string>
-    <string name="context_remove">"Видалити "</string>
-    <string name="context_remove_all">"Видалити все"</string>
+    <string name="noWordsFound">Немає запитань! Зробіть інший вибір.</string>
 </resources>

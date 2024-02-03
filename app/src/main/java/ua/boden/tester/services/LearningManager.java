@@ -185,6 +185,6 @@ public class LearningManager {
 	}
 
 	public boolean hasPreviousStep() {
-		return !(ContextHolder.getSettingsHolder().getStartFromNumber() == 0 && currentStage.isFirst());
+		return !(/*ContextHolder.getSettingsHolder().getStartFromNumber() == 0 &&*/ currentStage.isFirst());
 	}
 }
