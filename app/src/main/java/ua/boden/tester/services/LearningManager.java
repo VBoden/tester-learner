@@ -4,6 +4,7 @@ import ua.boden.tester.pojo.Answer;
 import ua.boden.tester.pojo.Question;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -154,6 +155,7 @@ public class LearningManager {
 
 	public void updateWordChoices() {
 		List<Answer> answers = allQuestions.get(currentCartdNum).getAnswers();
+		Collections.shuffle(answers);
 		spisok.clear();
 		for (int i = 0; i < answers.size(); i++) {
 			spisok.add(answers.get(i).getValue());
